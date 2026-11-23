@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Select Your Problem</title>
+    <link rel="stylesheet"
+    href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+
+<body>
+
+    <h1>Find Your Doctor</h1>
+
+    <div class="box">
+
+        <h2>What is your health problem?</h2>
+
+        <form action="/symptoms" method="POST">
+
+            <select name="problem" required>
+
+                <option value="">Select Your Problem</option>
+
+                <option value="Fever">Fever</option>
+                <option value="Headache">Headache</option>
+                <option value="Heart Problem">Heart Problem</option>
+                <option value="Eye Problem">Eye Problem</option>
+                <option value="Skin Problem">Skin Problem</option>
+                <option value="Tooth Pain">Tooth Pain</option>
+                <option value="Bone Pain">Bone Pain</option>
+
+            </select>
+
+            <br><br>
+
+            <button type="submit">Find Doctor</button>
+
+        </form>
+
+    </div>
+
+</body>
+</html>

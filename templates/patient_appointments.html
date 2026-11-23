@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>My Appointment History</title>
+    <link rel="stylesheet"
+    href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+
+    <h1>My Appointment History</h1>
+    {% if request.args.get('rescheduled') == '1' %}
+<p style="color: green; font-weight: bold;">
+    Your appointment has been rescheduled successfully!
+</p>
+{% endif %}
+    {% if request.args.get('cancelled') == '1' %}
+<p style="color: green; font-weight: bold;">
+    Your appointment has been cancelled successfully!
+</p>
+{% endif %}
+
+    <div class="box">
+        <table border="1" cellpadding="10">
+            <tr>
+                <th>Appointment ID</th>
+                <th>Doctor Name</th>
+                <th>Date</th>
+                <th>Time</th>
+                <th>Status</th>
+                <th>Action</th>
+            </tr>
+
+            {% for appointment in appointments %}
+            <tr>
+                <td>{{ appointment.appointment_id }}</td>
+                <td>{{ appointment.doctor_name }}</td>
+                <td>{{ appointment.appointment_date }}</td>
+                <td>{{ appointment.appointment_time }}</td>
+                <td>{{ appointment.appointment_status }}</td>
+                <td>
+                    {% if appointment.appointment_status in ['Booked', 'Confirmed'] %}
+                    <form action="/patient-cancel-appointment/{{ appointment.appointment_id }}" method="POST"
+      onsubmit="return confirm('Are you sure you want to cancel this appointment?');">
+                        <button type="submit">Cancel Appointment</button>
+                        <a href="/reschedule-appointment/{{ appointment.appointment_id }}">
+    <button type="button">Reschedule</button>
+</a>
+                    </form>
+                    {% else %}
+                    Not Available
+                    {% endif %}
+                </td>
+            </tr>
+
+            {% else %}
+            <tr>
+                <td colspan="6">No appointments found</td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+
+    <br>
+    <a href="/dashboard">Back to Dashboard</a>
+
+</body>
+</html>

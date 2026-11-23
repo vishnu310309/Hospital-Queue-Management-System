@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Your Token</title>
+
+    <link rel="stylesheet"
+    href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+
+<body>
+
+    <h1>Token Generated Successfully!</h1>
+
+    <div class="box">
+
+        <h2>Your Token Number</h2>
+
+        <h1>{{ token_number }}</h1>
+
+        <p>Doctor: {{ doctor }}</p>
+
+        <p>Patients Ahead: {{ waiting }}</p>
+
+        <p>Estimated Waiting Time:
+            {{ waiting_time }} Minutes
+        </p>
+
+        <p>Status: Waiting</p>
+
+        <a href="/dashboard">
+            <button>Back to Dashboard</button>
+        </a>
+
+    </div>
+
+</body>
+</html>

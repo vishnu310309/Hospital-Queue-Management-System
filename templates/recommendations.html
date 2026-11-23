@@ -1,0 +1,52 @@
+\<!DOCTYPE html>
+
+\<html> \<head>     \<title>Doctor Recommendation\</title>     \<link rel="stylesheet"     href="{{ url_for('static', filename='css/style.css') }}"> \</head>
+
+\<body>
+
+```
+<h1>Recommended Doctors</h1>
+
+<h3>Your Selected Problem: {{ problem }}</h3>
+
+<div class="dashboard">
+
+    {% for doctor in doctors %}
+
+    <div class="card">
+
+        <h2>{{ doctor.doctor_name }}</h2>
+
+        <p>Specialization: {{ doctor.specialization }}</p>
+
+        <p>Phone: {{ doctor.phone }}</p>
+
+        <p>Availability: {{ doctor.availability }}</p>
+
+        <form action="/book-token" method="POST">
+
+            <input type="hidden"
+                   name="doctor_id"
+                   value="{{ doctor.doctor_id }}">
+
+            <button type="submit">Book Token</button>
+
+        </form>
+
+    </div>
+
+    {% else %}
+
+    <p>No available doctor found.</p>
+
+    {% endfor %}
+
+</div>
+
+<br>
+
+<a href="/symptoms">Go Back</a>
+```
+
+\</body>
+\</html>

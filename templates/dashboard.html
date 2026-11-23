@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Hospital Dashboard</title>
+
+    <link rel="stylesheet"
+    href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+
+<body>
+
+    <h1>Hospital Dashboard</h1>
+
+    <h2>Welcome, {{ patient_name }}!</h2>
+
+    <div class="dashboard">
+
+        <div class="card">
+            <h3>Total Patients</h3>
+            <p>{{ total_patients }}</p>
+        </div>
+
+        <div class="card">
+            <h3>Doctor Management</h3>
+            <p>Manage Doctors</p>
+        </div>
+
+        <div class="card">
+            <h3>Token Management</h3>
+            <p>Manage Tokens</p>
+        </div>
+
+        <div class="card">
+            <h3>Appointments</h3>
+            <p>Manage Appointments</p>
+        </div>
+
+    </div>
+
+    <br>
+    <br><br>
+
+<a href="/doctors">
+    <button>View Doctors</button>
+</a>
+<br><br>
+
+<a href="/symptoms">
+    <button>Find a Doctor</button>
+</a>
+<br><br>
+
+<a href="/my-queue">
+    <button>Track My Queue</button>
+</a>
+<br><br>
+<a href="/appointment-booking">
+    <button>Book Appointment</button>
+</a>
+<br><br>
+<a href="/my-appointments">
+    <button>My Appointments</button>
+</a>
+<br><br>
+<br><br>
+
+    <a href="/logout">
+        <button>Logout</button>
+    </a>
+    <br><br>
+<a href="/my-appointments">
+    <button>My Appointments</button>
+</a>
+
+</body>
+</html>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Edit Doctor</title>
+    <link rel="stylesheet"
+    href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+
+<body>
+
+    <h1>Edit Doctor Details</h1>
+
+    <div class="box">
+
+        <form action="/update-doctor/{{ doctor.doctor_id }}"
+              method="POST">
+
+            <label>Doctor Name</label>
+            <input type="text"
+                   name="doctor_name"
+                   value="{{ doctor.doctor_name }}"
+                   required>
+
+            <br><br>
+
+            <label>Specialization</label>
+            <input type="text"
+                   name="specialization"
+                   value="{{ doctor.specialization }}"
+                   required>
+
+            <br><br>
+
+            <label>Phone Number</label>
+            <input type="text"
+                   name="phone"
+                   value="{{ doctor.phone }}"
+                   required>
+
+            <br><br>
+
+            <label>Availability</label>
+
+            <select name="availability">
+                <option value="Available"
+                {% if doctor.availability == 'Available' %}selected{% endif %}>
+                    Available
+                </option>
+
+                <option value="Unavailable"
+                {% if doctor.availability == 'Unavailable' %}selected{% endif %}>
+                    Unavailable
+                </option>
+            </select>
+
+            <br><br>
+
+            <button type="submit">Update Doctor</button>
+
+        </form>
+
+    </div>
+
+    <a href="/admin-doctors">Back to Doctor List</a>
+
+</body>
+</html>

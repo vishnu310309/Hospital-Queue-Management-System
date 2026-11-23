@@ -1,0 +1,54 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Live Queue Tracking</title>
+    <link rel="stylesheet"
+    href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+
+    <h1>Hospital Queue Tracking</h1>
+
+    {% if tokens %}
+
+        {% for token in tokens %}
+
+        <div class="box">
+
+            <h2>Your Queue Details</h2>
+
+            <h1>Token: {{ token.token_number }}</h1>
+
+            <p><b>Doctor:</b> {{ token.doctor_name }}</p>
+
+            <p><b>Patients Ahead:</b> {{ token.waiting }}</p>
+
+            <p><b>Estimated Waiting Time:</b>
+                {{ token.waiting_time }} minutes
+            </p>
+
+            <p><b>Token Status:</b> {{ token.token_status }}</p>
+
+            <hr>
+
+        </div>
+
+        {% endfor %}
+
+    {% else %}
+
+        <p>You have not booked any token yet.</p>
+
+    {% endif %}
+
+    <br>
+
+    <button onclick="location.reload()">Refresh Queue</button>
+
+    <br><br>
+
+    <a href="/dashboard">Back to Dashboard</a>
+
+</body>
+</html>

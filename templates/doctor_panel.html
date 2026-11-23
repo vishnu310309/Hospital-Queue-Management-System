@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Doctor Panel</title>
+    <link rel="stylesheet"
+    href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+
+<body>
+
+    <h1>Doctor Panel</h1>
+    <h2>Welcome, Doctor!</h2>
+
+    <div class="box">
+
+        <h2>Today's Patient Queue</h2>
+
+        {% for patient in patients %}
+
+        <div class="card">
+
+            <h3>Token Number: {{ patient.token_number }}</h3>
+
+            <p>Patient Name: {{ patient.patient_name }}</p>
+
+            <p>Status: {{ patient.token_status }}</p>
+
+            <form action="/update-token/{{ patient.token_id }}"
+                  method="POST">
+
+                <button name="status"
+                        value="Consulting">
+                    Call Patient
+                </button>
+
+                <button name="status"
+                        value="Completed">
+                    Complete
+                </button>
+
+            </form>
+
+        </div>
+
+        {% else %}
+
+        <p>No patients in today's queue.</p>
+
+        {% endfor %}
+
+    </div>
+
+    <br>
+
+    <a href="/dashboard">Back to Dashboard</a>
+
+</body>
+</html>

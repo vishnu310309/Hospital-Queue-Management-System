@@ -1,0 +1,47 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Admin Queue Monitoring</title>
+    <link rel="stylesheet"
+    href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+
+    <h1>Queue Monitoring</h1>
+
+    <div class="box">
+        <h2>Patient Token Details</h2>
+
+        <table border="1" cellpadding="10">
+            <tr>
+                <th>Token ID</th>
+                <th>Token Number</th>
+                <th>Patient Name</th>
+                <th>Doctor Name</th>
+                <th>Status</th>
+                <th>Booking Time</th>
+            </tr>
+
+            {% for token in tokens %}
+            <tr>
+                <td>{{ token.token_id }}</td>
+                <td>{{ token.token_number }}</td>
+                <td>{{ token.patient_name }}</td>
+                <td>{{ token.doctor_name }}</td>
+                <td>{{ token.token_status }}</td>
+                <td>{{ token.booking_time }}</td>
+            </tr>
+            {% else %}
+            <tr>
+                <td colspan="6">No tokens found</td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+
+    <br>
+    <a href="/admin-panel">Back to Admin Panel</a>
+
+</body>
+</html>
